@@ -1,0 +1,18 @@
+---
+- name : Instalando o IIS no Windows Server
+  anfitriões : janelas
+  tarefas :
+  - nome : Instalando IIS      
+    win_feature :        
+      nome : " Servidor Web "        
+      estado : presente
+
+  - nome : Iniciando IIS
+    win_service :
+      nome : W3Svc
+      estado : iniciado
+
+  - name : Criando arquivo index.html           
+    win_copy :
+      conteúdo : Teste de Conexão
+      dest : C:\Inetpub\wwwroot\index.html-
